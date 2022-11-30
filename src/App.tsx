@@ -15,17 +15,15 @@ export default function App() {
   );
 
   const onClick = (e: any, h: any) => {
-    const hexas = hexagons.map((hex) => {
+    const newHexagons = hexagons.map((hex) => {
       if (HexUtils.equals(h.state.hex, hex)) {
-        hex.text = "null";
-        console.log(hex);
+        const flipped = !hex?.state?.flipped || false;
+        return { ...hex, state: { ...hex.state, flipped } };
       }
       return hex;
     });
 
-    console.log(h);
-
-    setHexagons(hexas);
+    setHexagons(newHexagons);
   };
 
   return (
@@ -34,7 +32,7 @@ export default function App() {
         <Layout size={{ x: 5, y: 5 }} origin={{ x: -60, y: -40 }}>
           {hexagons.map((hex, i) => (
             <Hexagon key={i} {...hex} onClick={onClick}>
-              {hex?.text && <Text>{HexUtils.getID(hex)}</Text>}
+              {hex?.state?.flipped && <Text>{HexUtils.getID(hex)}</Text>}
             </Hexagon>
           ))}
         </Layout>
