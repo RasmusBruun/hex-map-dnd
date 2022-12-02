@@ -1,16 +1,18 @@
 import { Hex } from "react-hexgrid";
 
 export enum TerrainType {
-  DifficultTerrain = 1,
-  Food = 2,
-  Encounter = 3,
-  Treasure = 4,
-  Foo = 5,
-  Bar = 6,
+  None = 0,
+  Dungeon = 1,
+  Resources = 2,
+  Danger = 3,
+  Travelers = 4,
+  Mystique = 5,
+  DiffucultTerrain = 6,
+  Monster = 7,
 }
 
 type HexState = {
-  Hex: Hex;
-  Flipped: boolean;
-  TerrainType: TerrainType;
+  hex: Hex;
+  flipped: boolean;
+  terrainType: TerrainType;
 };
